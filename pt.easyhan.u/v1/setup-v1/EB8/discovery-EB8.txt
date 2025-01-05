@@ -1,0 +1,116 @@
+; 2024-03-10
+
+; button
+
+Publish2 homeassistant/button/nikito7-EB8/restart/config {"name":"ESP Restart","uniq_id":"EB8_ESP_RestartBtn","cmd_t":"cmnd/edpbox8/restart","pl_prs":"1","ic":"mdi:restart","dev":{"ids":"nikito7-EB8","name":"EB8","mdl":"Easy HAN","mf":"nikito7"}}
+
+; sensor
+; esp
+
+Publish2 homeassistant/sensor/nikito7-EB8/uptime/config {"name":"ESP Uptime","uniq_id":"EB8_ESP_Uptime","stat_t":"tele/edpbox8/STATE","val_tpl":"{{ ( value_json.UptimeSec / 3600 ) | round(1) }}","unit_of_meas":"h","ic":"mdi:alarm","avty_t":"tele/edpbox8/LWT","pl_avail":"Online","pl_not_avail":"Offline","stat_cla":"measurement","dev":{"ids":"nikito7-EB8"}}
+
+Publish2 homeassistant/sensor/nikito7-EB8/heap/config {"name":"ESP Free Heap","uniq_id":"EB8_ESP_Heap","stat_t":"tele/edpbox8/STATE","val_tpl":"{{ value_json.Heap }}","unit_of_meas":"kB","ic":"mdi:chip","stat_cla":"measurement","dev":{"ids":"nikito7-EB8"}}
+
+Publish2 homeassistant/sensor/nikito7-EB8/load/config {"name":"ESP Load","uniq_id":"EB8_ESP_Load","stat_t":"tele/edpbox8/STATE","val_tpl":"{{ value_json.LoadAvg }}","unit_of_meas":"%%","ic":"mdi:chip","stat_cla":"measurement","dev":{"ids":"nikito7-EB8"}}
+
+Publish2 homeassistant/sensor/nikito7-EB8/sleep/config {"name":"ESP Sleep","uniq_id":"EB8_ESP_Sleep","stat_t":"tele/edpbox8/STATE","val_tpl":"{{ value_json.Sleep }}","unit_of_meas":"ms","ic":"mdi:chip","stat_cla":"measurement","dev":{"ids":"nikito7-EB8"}}
+
+Publish2 homeassistant/sensor/nikito7-EB8/signal/config {"name":"ESP Signal","uniq_id":"EB8_ESP_Signal","stat_t":"tele/edpbox8/STATE","val_tpl":"{{ value_json.Wifi.Signal }}","unit_of_meas":"dB","dev_cla":"signal_strength","stat_cla":"measurement","dev":{"ids":"nikito7-EB8"}}
+
+; clock
+
+Publish2 homeassistant/sensor/nikito7-EB8/clockhan/config {"name":"Clock","uniq_id":"EB8_Clock","stat_t":"tele/edpbox8/SENSOR","val_tpl":"{%% if value_json.HAN.ck is defined %%} {{ value_json.HAN.ck|string }} {%% else %%} {{ states('sensor.eb8_clock') }}{%% endif %%}","ic":"mdi:clock","dev":{"ids":"nikito7-EB8"}}
+
+Publish2 homeassistant/sensor/nikito7-EB8/clockesp/config {"name":"ESP Clock","uniq_id":"EB8_ESP_Clock","stat_t":"tele/edpbox8/SENSOR","val_tpl":"{%% if value_json.Time is defined %%} {{ value_json.Time.split('T')[1]|string }} {%% else %%} {{ states('sensor.eb8_esp_clock') }} {%% endif %%}","ic":"mdi:clock","dev":{"ids":"nikito7-EB8"}}
+
+; voltage
+
+Publish2 homeassistant/sensor/nikito7-EB8/vl1/config {"name":"Voltage L1","uniq_id":"EB8_VolL1","stat_t":"tele/edpbox8/SENSOR","val_tpl":"{%% set x = value_json.EB8.VL1|float(0) %%} {%% if x > 0 %%} {{ x }} {%% endif %%}","unit_of_meas":"V","dev_cla":"voltage","stat_cla":"measurement","dev":{"ids":"nikito7-EB8"}}
+
+Publish2 homeassistant/sensor/nikito7-EB8/vl2/config {"name":"Voltage L2","uniq_id":"EB8_VolL2","stat_t":"tele/edpbox8/SENSOR","val_tpl":"{%% set x = value_json.EB8.VL2|float(0) %%} {%% if x > 0 %%} {{ x }} {%% endif %%}","unit_of_meas":"V","dev_cla":"voltage","stat_cla":"measurement","dev":{"ids":"nikito7-EB8"}}
+
+Publish2 homeassistant/sensor/nikito7-EB8/vl3/config {"name":"Voltage L3","uniq_id":"EB8_VolL3","stat_t":"tele/edpbox8/SENSOR","val_tpl":"{%% set x = value_json.EB8.VL3|float(0) %%} {%% if x > 0 %%} {{ x }} {%% endif %%}","unit_of_meas":"V","dev_cla":"voltage","stat_cla":"measurement","dev":{"ids":"nikito7-EB8"}}
+
+; current
+
+Publish2 homeassistant/sensor/nikito7-EB8/clt/config {"name":"Current","uniq_id":"EB8_Current","stat_t":"tele/edpbox8/SENSOR","val_tpl":"{{ value_json.EB8.CL|float(0.0) }}","unit_of_meas":"A","dev_cla":"current","stat_cla":"measurement","dev":{"ids":"nikito7-EB8"}}
+
+Publish2 homeassistant/sensor/nikito7-EB8/cl1/config {"name":"Current L1","uniq_id":"EB8_CurL1","stat_t":"tele/edpbox8/SENSOR","val_tpl":"{{ value_json.EB8.CL1|float(0.0) }}","unit_of_meas":"A","dev_cla":"current","stat_cla":"measurement","dev":{"ids":"nikito7-EB8"}}
+
+Publish2 homeassistant/sensor/nikito7-EB8/cl2/config {"name":"Current L2","uniq_id":"EB8_CurL2","stat_t":"tele/edpbox8/SENSOR","val_tpl":"{{ value_json.EB8.CL2|float(0.0) }}","unit_of_meas":"A","dev_cla":"current","stat_cla":"measurement","dev":{"ids":"nikito7-EB8"}}
+
+Publish2 homeassistant/sensor/nikito7-EB8/cl3/config {"name":"Current L3","uniq_id":"EB8_CurL3","stat_t":"tele/edpbox8/SENSOR","val_tpl":"{{ value_json.EB8.CL3|float(0.0) }}","unit_of_meas":"A","dev_cla":"current","stat_cla":"measurement","dev":{"ids":"nikito7-EB8"}}
+
+; factor
+
+Publish2 homeassistant/sensor/nikito7-EB8/pf/config {"name":"Power Factor","uniq_id":"EB8_PowFac","stat_t":"tele/edpbox8/SENSOR","val_tpl":"{%% set x = value_json.EB8.PF|float(0) %%} {%% if x > -1 %%} {{ x }} {%% endif %%}","dev_cla":"power_factor","stat_cla":"measurement","dev":{"ids":"nikito7-EB8"}}
+
+Publish2 homeassistant/sensor/nikito7-EB8/pf1/config {"name":"Power Factor L1","uniq_id":"EB8_PowFacL1","stat_t":"tele/edpbox8/SENSOR","val_tpl":"{%% set x = value_json.EB8.PF1|float(0) %%} {%% if x > -1 %%} {{ x }} {%% endif %%}","dev_cla":"power_factor","stat_cla":"measurement","dev":{"ids":"nikito7-EB8"}}
+
+Publish2 homeassistant/sensor/nikito7-EB8/pf2/config {"name":"Power Factor L2","uniq_id":"EB8_LowFacL2","stat_t":"tele/edpbox8/SENSOR","val_tpl":"{%% set x = value_json.EB8.PF2|float(0) %%} {%% if x > -1 %%} {{ x }} {%% endif %%}","dev_cla":"power_factor","stat_cla":"measurement","dev":{"ids":"nikito7-EB8"}}
+
+Publish2 homeassistant/sensor/nikito7-EB8/pf3/config {"name":"Power Factor L3","uniq_id":"EB8_PowFacL3","stat_t":"tele/edpbox8/SENSOR","val_tpl":"{%% set x = value_json.EB8.PF3|float(0) %%} {%% if x > -1 %%} {{ x }} {%% endif %%}","dev_cla":"power_factor","stat_cla":"measurement","dev":{"ids":"nikito7-EB8"}}
+
+; power
+
+Publish2 homeassistant/sensor/nikito7-EB8/api/config {"name":"Active Power Import","uniq_id":"EB8_ActPow","stat_t":"tele/edpbox8/SENSOR","val_tpl":"{%% set x = value_json.EB8.API|int(0) %%} {%% if x > -1 %%} {{ x }} {%% endif %%}","unit_of_meas":"W","dev_cla":"power","stat_cla":"measurement","dev":{"ids":"nikito7-EB8"}}
+
+Publish2 homeassistant/sensor/nikito7-EB8/ape/config {"name":"Active Power Export","uniq_id":"EB8_ActPowExp","stat_t":"tele/edpbox8/SENSOR","val_tpl":"{%% set x = value_json.EB8.APE|int(0) %%} {%% if x > -1 %%} {{ x }} {%% endif %%}","unit_of_meas":"W","dev_cla":"power","stat_cla":"measurement","dev":{"ids":"nikito7-EB8"}}
+
+Publish2 homeassistant/sensor/nikito7-EB8/api1/config {"name":"Active Power L1","uniq_id":"EB8_ActLowL1","stat_t":"tele/edpbox8/SENSOR","val_tpl":"{%% set x = value_json.EB8.API1|int(0) %%} {%% if x > -1 %%} {{ x }} {%% endif %%}","unit_of_meas":"W","dev_cla":"power","stat_cla":"measurement","dev":{"ids":"nikito7-EB8"}}
+
+Publish2 homeassistant/sensor/nikito7-EB8/api2/config {"name":"Active Power L2","uniq_id":"EB8_ActPowL2","stat_t":"tele/edpbox8/SENSOR","val_tpl":"{%% set x = value_json.EB8.API2|int(0) %%} {%% if x > -1 %%} {{ x }} {%% endif %%}","unit_of_meas":"W","dev_cla":"power","stat_cla":"measurement","dev":{"ids":"nikito7-EB8"}}
+
+Publish2 homeassistant/sensor/nikito7-EB8/api3/config {"name":"Active Power L3","uniq_id":"EB8_ActLowL3","stat_t":"tele/edpbox8/SENSOR","val_tpl":"{%% set x = value_json.EB8.API3|int(0) %%} {%% if x > -1 %%} {{ x }} {%% endif %%}","unit_of_meas":"W","dev_cla":"power","stat_cla":"measurement","dev":{"ids":"nikito7-EB8"}}
+
+Publish2 homeassistant/sensor/nikito7-EB8/ape1/config {"name":"Active Power L1 Export","uniq_id":"EB8_ActPowL1Exp","stat_t":"tele/edpbox8/SENSOR","val_tpl":"{%% set x = value_json.EB8.APE1|int(0) %%} {%% if x > -1 %%} {{ x }} {%% endif %%}","unit_of_meas":"W","dev_cla":"power","stat_cla":"measurement","dev":{"ids":"nikito7-EB8"}}
+
+Publish2 homeassistant/sensor/nikito7-EB8/ape2/config {"name":"Active Power L2 Export","uniq_id":"EB8_ActPowL2Exp","stat_t":"tele/edpbox8/SENSOR","val_tpl":"{%% set x = value_json.EB8.APE2|int(0) %%} {%% if x > -1 %%} {{ x }} {%% endif %%}","unit_of_meas":"W","dev_cla":"power","stat_cla":"measurement","dev":{"ids":"nikito7-EB8"}}
+
+Publish2 homeassistant/sensor/nikito7-EB8/ape3/config {"name":"Active Power L3 Export","uniq_id":"EB8_ActPowL3Exp","stat_t":"tele/edpbox8/SENSOR","val_tpl":"{%% set x = value_json.EB8.APE3|int(0) %%} {%% if x > -1 %%} {{ x }} {%% endif %%}","unit_of_meas":"W","dev_cla":"power","stat_cla":"measurement","dev":{"ids":"nikito7-EB8"}}
+
+; frequency
+
+Publish2 homeassistant/sensor/nikito7-EB8/freq/config {"name":"Frequency","uniq_id":"EB8_Frequency","stat_t":"tele/edpbox8/SENSOR","val_tpl":"{%% set x = value_json.EB8.FR|float(0) %%} {%% if x > 0 %%} {{ x }} {%% endif %%}","unit_of_meas":"Hz","dev_cla":"frequency","stat_cla":"measurement","dev":{"ids":"nikito7-EB8"}}
+
+; kwh
+
+Publish2 homeassistant/sensor/nikito7-EB8/tet1/config {"name":"T1 Vazio","uniq_id":"EB8_TotEneT1","stat_t":"tele/edpbox8/SENSOR","val_tpl":"{%% set x = value_json.EB8.TET1|float(0) %%} {%% if x > 0 %%} {{ x }} {%% endif %%}","unit_of_meas":"kWh","dev_cla":"energy","stat_cla":"total_increasing","dev":{"ids":"nikito7-EB8"}}
+
+Publish2 homeassistant/sensor/nikito7-EB8/tet2/config {"name":"T2 Ponta","uniq_id":"EB8_TotEneT2","stat_t":"tele/edpbox8/SENSOR","val_tpl":"{%% set x = value_json.EB8.TET2|float(0) %%} {%% if x > 0 %%} {{ x }} {%% endif %%}","unit_of_meas":"kWh","dev_cla":"energy","stat_cla":"total_increasing","dev":{"ids":"nikito7-EB8"}}
+
+Publish2 homeassistant/sensor/nikito7-EB8/tet3/config {"name":"T3 Cheias","uniq_id":"EB8_TotEneT3","stat_t":"tele/edpbox8/SENSOR","val_tpl":"{%% set x = value_json.EB8.TET3|float(0) %%} {%% if x > 0 %%} {{ x }} {%% endif %%}","unit_of_meas":"kWh","dev_cla":"energy","stat_cla":"total_increasing","dev":{"ids":"nikito7-EB8"}}
+
+Publish2 homeassistant/sensor/nikito7-EB8/tei/config {"name":"Import","uniq_id":"EB8_TotEneImp","stat_t":"tele/edpbox8/SENSOR","val_tpl":"{%% set x = value_json.EB8.TEI|float(0) %%} {%% if x > 0 %%} {{ x }} {%% endif %%}","unit_of_meas":"kWh","dev_cla":"energy","stat_cla":"total_increasing","dev":{"ids":"nikito7-EB8"}}
+
+Publish2 homeassistant/sensor/nikito7-EB8/tee/config {"name":"Export","uniq_id":"EB8_TotEneExp","stat_t":"tele/edpbox8/SENSOR","val_tpl":"{%% set x = value_json.EB8.TEE|float(0) %%} {%% if x > 0 %%} {{ x }} {%% endif %%}","unit_of_meas":"kWh","dev_cla":"energy","stat_cla":"total_increasing","dev":{"ids":"nikito7-EB8"}}
+
+Publish2 homeassistant/sensor/nikito7-EB8/tei1/config {"name":"Import L1","uniq_id":"EB8_TotEneImpL1","stat_t":"tele/edpbox8/SENSOR","val_tpl":"{%% set x = value_json.EB8.TEIL1|float(0) %%} {%% if x > 0 %%} {{ x }} {%% endif %%}","unit_of_meas":"kWh","dev_cla":"energy","stat_cla":"total_increasing","dev":{"ids":"nikito7-EB8"}}
+
+Publish2 homeassistant/sensor/nikito7-EB8/tei2/config {"name":"Import L2","uniq_id":"EB8_TotEneImpL2","stat_t":"tele/edpbox8/SENSOR","val_tpl":"{%% set x = value_json.EB8.TEIL2|float(0) %%} {%% if x > 0 %%} {{ x }} {%% endif %%}","unit_of_meas":"kWh","dev_cla":"energy","stat_cla":"total_increasing","dev":{"ids":"nikito7-EB8"}}
+
+Publish2 homeassistant/sensor/nikito7-EB8/tei3/config {"name":"Import L3","uniq_id":"EB8_TotEneImpL3","stat_t":"tele/edpbox8/SENSOR","val_tpl":"{%% set x = value_json.EB8.TEIL3|float(0) %%} {%% if x > 0 %%} {{ x }} {%% endif %%}","unit_of_meas":"kWh","dev_cla":"energy","stat_cla":"total_increasing","dev":{"ids":"nikito7-EB8"}}
+
+; tariff
+
+Publish2 homeassistant/sensor/nikito7-EB8/tariff/config {"name":"Tariff","uniq_id":"EB8_Tariff","stat_t":"tele/edpbox8/SENSOR","val_tpl":"{%% set x = value_json.EB8.Tariff|int(0) %%} {%% if x == 1 %%} {{ 'Vazio' }} {%% elif x == 2 %%} {{ 'Ponta' }} {%% elif x == 3 %%} {{ 'Cheias' }} {%% endif %%}","ic":"mdi:counter","dev":{"ids":"nikito7-EB8"}}
+
+; Extras
+
+Publish2 homeassistant/sensor/nikito7-EB8/lpmin/config {"name":"LP Minutes","uniq_id":"EB8_LP_Minutes","stat_t":"tele/edpbox8/SENSOR","val_tpl":"{%% if value_json.EB8 is defined %%} {%% set x = value_json.EB8.LP1_MM|int(none) %%} {%% if x != none %%} {{ x }} {%% endif %%} {%% endif %%}","unit_of_meas":"m","stat_cla":"measurement","ic":"mdi:alarm","dev":{"ids":"nikito7-EB8"}}
+
+Publish2 homeassistant/sensor/nikito7-EB8/lpimport/config {"name":"LP Import Inc","uniq_id":"EB8_LP_Import","stat_t":"tele/edpbox8/SENSOR","val_tpl":"{%% if value_json.EB8 is defined %%} {%% set x = value_json.EB8.LP3_IMP|float(none) %%} {%% if x != none %%}  {{ x }}\n  {%% endif %%} {%% endif %%}","unit_of_meas":"kWh/15m","stat_cla":"measurement","ic":"mdi:counter","dev":{"ids":"nikito7-EB8"}}
+
+Publish2 homeassistant/sensor/nikito7-EB8/lpexport/config {"name":"LP Export Inc","uniq_id":"EB8_LP_Export","stat_t":"tele/edpbox8/SENSOR","val_tpl":"{%% if value_json.EB8 is defined %%} {%% set x = value_json.EB8.LP6_EXP|float(none) %%} {%% if x != none %%} {{ x }} {%% endif %%} {%% endif %%}","unit_of_meas":"kWh/15m","stat_cla":"measurement","ic":"mdi:counter","dev":{"ids":"nikito7-EB8"}}
+
+Publish2 homeassistant/sensor/nikito7-EB8/lpsaldo/config {"name":"LP Saldo Inc","uniq_id":"EB8_LP_Saldo_Inc","stat_t":"tele/edpbox8/SENSOR","val_tpl":"{%% if value_json.HAN is defined %%} {{ value_json.HAN.s0|float(0) }} {%% endif %%}","unit_of_meas":"kWh/15m","stat_cla":"measurement","ic":"mdi:counter","dev":{"ids":"nikito7-EB8"}}
+
+Publish2 homeassistant/sensor/nikito7-EB8/lpcalc/config {"name":"LP Calculado","uniq_id":"EB8_LP_Calculado","stat_t":"tele/edpbox8/SENSOR","val_tpl":"{%% if value_json.HAN is defined %%} {%% set x = value_json.HAN.s1|float(0) %%} {%% if x > 0 %%} {{ x }} {%% endif %%} {%% endif %%}","unit_of_meas":"kWh","dev_cla":"energy","stat_cla":"total_increasing","dev":{"ids":"nikito7-EB8"}}
+
+Publish2 homeassistant/sensor/nikito7-EB8/lpexced/config {"name":"LP Excedente","uniq_id":"EB8_LP_Excedente","stat_t":"tele/edpbox8/SENSOR","val_tpl":"{%% if value_json.HAN is defined %%} {%% set x = value_json.HAN.s2|float(0) %%} {%% if x > 0 %%} {{ x }} {%% endif %%} {%% endif %%}","unit_of_meas":"kWh","dev_cla":"energy","stat_cla":"total_increasing","dev":{"ids":"nikito7-EB8"}}
+
+; Adc
+
+Publish2 homeassistant/sensor/nikito7-EB8/adc/config {"name":"ADC Addon","uniq_id":"EB8_ADC_Addon","stat_t":"tele/edpbox8/SENSOR","val_tpl":"{%% if value_json.ANALOG is defined %%} {%% set x = value_json.ANALOG.A0|int(0) %%} {%% if x > 0 %%} {{ (x/1024*6)|float(None)|round(2) }} {%% endif %%} {%% endif %%}","unit_of_meas":"V","dev_cla":"voltage","stat_cla":"measurement","dev":{"ids":"nikito7-EB8"}}
+
+; EOF
